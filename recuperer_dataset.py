@@ -55,7 +55,7 @@ def download_and_extract(url, dest_dir):
     else:
         print(f"{url.split('/')[-1]} déjà présent, on passe.")
 
-    # Extraction
+    # Extraction des archives
     print("Extraction en cours...")
     try:
         with tarfile.open(filename) as tar:
@@ -64,12 +64,11 @@ def download_and_extract(url, dest_dir):
     except Exception as e:
         print("Erreur lors de l'extraction :", e)
 
-# Vérification de la connexion Internet
+# Vérification de la connexion Internet...
 if not check_internet():
     print("Aucune connexion Internet détectée. Veuillez vérifier votre réseau.")
     sys.exit(1)
 
-# Télécharger desimages etlistes de train/test
 download_and_extract(IMAGES_URL, BASE_DIR)
 download_and_extract(LISTS_URL, BASE_DIR)
 
