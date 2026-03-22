@@ -11,6 +11,7 @@ import sys
 # Une vérification de la connexion Internet est effectuée avant le téléchargement.
 # Gestion des erreurs ajoutée pour améliorer la robustesse.
 # Version 1.1
+# Date 12/03/2026
 
 BASE_DIR = "./stanford_dogs"
 os.makedirs(BASE_DIR, exist_ok=True)

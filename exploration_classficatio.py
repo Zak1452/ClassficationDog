@@ -5,6 +5,28 @@ import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
 
+# -------------------------------------------------------------------------
+# Author CHAKER Zakaria & NSANGUE Nathan
+# Objectif :
+# Analyse exploratoire du dataset Stanford Dogs....
+#
+# Cette partie du code permet de :
+# - Vérifier l'existence du dossier contenant les images.
+# - Identifier les classes (races de chiens) présentes dans le dataset.
+# - Compter le nombre d'images par classe.
+# - Générer des statistiques globales (total, moyenne, min, max) relatives au Dataset
+# - Analyser les dimensions des images (largeur et hauteur)
+#
+# Sorties :
+# - distribution_races.png : répartition des images par race
+# - dimensions_images.png : distribution des tailles d’images
+#
+# Remarque :
+# Cette étape est essentielle pour comprendre la structure du dataset avant l’entraînement du modèle (équilibrage, taille des images, etc.).
+# Date 15/03/2026
+# Version 1.1
+# -------------------------------------------------------------------------
+
 BASE_DIR = "./stanford_dogs"
 IMAGES_DIR = os.path.join(BASE_DIR, "Images")
 
@@ -54,7 +76,7 @@ axes[0].set_xlabel("Nombre d'images")
 axes[0].axvline(df_counts["nb_images"].mean(), color="red", linestyle="--", label="Moyenne")
 axes[0].legend()
 
-# Distribution globale (histogramme)
+# Distribution globale (affichage en histogramme)
 axes[1].hist(df_counts["nb_images"], bins=20, color="coral", edgecolor="white")
 axes[1].set_title("Distribution du nb d'images par race", fontsize=13)
 axes[1].set_xlabel("Nombre d'images")
@@ -67,8 +89,7 @@ plt.savefig("distribution_races.png", dpi=150, bbox_inches="tight")
 plt.show()
 print("Graphique sauvegarde : distribution_races.png")
 
-
-print("Analyse des dimensions (échantillon 500 images)...")
+print("Analyse des dimensions (echantillon 500 images)...")
 widths, heights = [], []
 
 all_images = glob.glob(os.path.join(IMAGES_DIR, "**", "*.jpg"), recursive=True)

@@ -7,15 +7,31 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.utils import shuffle
 
+# -------------------------------------------------------------------------
+# Author : CHAKER Zakaria & NSANGUE Nathan
+# Date   :16/03/2026
+# Version: 1.2
+#
+# Objectif :
+# Redimensionnement des images.
+#
+# Cette étape permet de :
+# - Parcourir l’ensemble des classes (races de chiens)
+# - Limiter le nombre d’images par classe (MAX_PER_CLASS)
+# - Redimensionner toutes les images à une taille uniforme (128 x 128)
+# - Sauvegarder les images prétraitees au format JPG dans un nouveau dossier (resized/)
+#
+# Sortie :
+# - Dossier "resized/" contenant les images redimensionnées -> organisées par race (même structure que le dataset original)
+# -------------------------------------------------------------------------
 
 IMG_SIZE = 128   # Taille cible (128x128 pixels)
-MAX_PER_CLASS = 80  # Limite par race pour rester rapide sur CPU
-                    # Mettre None pour utiliser toutes les images
+MAX_PER_CLASS = 80  # ombre maxi des echantillons à redimensioner
 
 BASE_DIR = "./stanford_dogs"
 IMAGES_DIR = os.path.join(BASE_DIR, "Images")
 
-# Vérification de l'existence du dossier Images
+# Vérification de l'existence du dossier Images /*Prerequis*/
 if not os.path.exists(IMAGES_DIR):
     print("Le dossier Images est introuvable. Vérifiez que le dataset est bien téléchargé.")
     exit(1)     
@@ -41,7 +57,7 @@ for folder in tqdm(breed_folders, desc="Traitement par race"):
     if MAX_PER_CLASS is not None:
         imgs = imgs[:MAX_PER_CLASS]
     
-    # Créer sous-dossier pour enregistrer les images redimensionnées
+    # Créer dessous-dossier pour enregistrer les images redimensionnées
     save_dir = os.path.join(RESIZED_DIR, folder)
     os.makedirs(save_dir, exist_ok=True)
     
@@ -53,7 +69,7 @@ for folder in tqdm(breed_folders, desc="Traitement par race"):
             # Nouveau nom de fichier
             save_path = os.path.join(save_dir, os.path.basename(img_path))
             
-            # Sauvegarde en JPG
+            # Savig en JPG
             img.save(save_path, format="JPEG", quality=95)
             
         except Exception as e:
