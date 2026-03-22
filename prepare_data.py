@@ -69,6 +69,11 @@ X_train, X_temp, y_train, y_temp = train_test_split(image_paths, y_encoded, test
 
 X_val, X_test, y_val, y_test = train_test_split(X_temp, y_temp, test_size=0.50, random_state=42, stratify=y_temp)
 
+np.savez("dataset.npz",
+         X_train=X_train, X_val=X_val, X_test=X_test,
+         y_train=y_train, y_val=y_val, y_test=y_test)
+print("Fichier dataset.npz sauvegardé !")
+
 # Affichage
 print("\nRepartition des donnees :")
 print(f"Train : {len(X_train)} images ({len(X_train)/len(image_paths)*100:.0f}%)")
