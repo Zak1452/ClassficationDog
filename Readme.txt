@@ -1,9 +1,9 @@
 /
-|_
 |_recuperer_dataset.py
 |_exploration.py
 |_redimensionnement.py
 |_prepare_data.py
 |_classification.py
+|_classification_par_cnn.py
 |_dog_breed_classification.ipynb
 |_README.md
