@@ -25,7 +25,7 @@ from sklearn.utils import shuffle
 # - Dossier "resized/" contenant les images redimensionnées -> organisées par race (même structure que le dataset original)
 # -------------------------------------------------------------------------
 
-IMG_SIZE = 100 # Taille cible (128x128 pixels)
+IMG_SIZE = 128 # Taille cible (128x128 pixels)
 MAX_PER_CLASS = 140  # ombre maxi des echantillons à redimensioner
 
 BASE_DIR = "./stanford_dogs"
